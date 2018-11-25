@@ -1,0 +1,6 @@
+flake8==3.5.0
+pytest==3.9.3
+pytest-cov==2.5.1
+boto3==1.7.4
+psycopg2==2.7.5
+pyfakefs==3.5
