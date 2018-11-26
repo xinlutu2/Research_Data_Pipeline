@@ -1,4 +1,4 @@
-"""Simple weather DAG that uses a few python operators."""
+"""Simple research DAG that uses a few python operators."""
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.operators.dummy_operator import DummyOperator
@@ -20,7 +20,7 @@ default_args = {
 
 # DAG Object
 dag = DAG(
-    'weather_dag',
+    'research_dag',
     default_args=default_args,
     schedule_interval='0 0 * * *',  # DAG will run once a day at midnight
     catchup=False,
@@ -32,11 +32,11 @@ start_tast = DummyOperator(
 )
 
 
-# Fetch weather data based on source_id, flatten into .csv files, save on local file system
-get_weather_task = PythonOperator(task_id='get_weather',
+# Fetch ..., flatten into .csv files, save on local file system
+get_research_task = PythonOperator(task_id='get_research',
                                   provide_context=True,
-                                  python_callable=c.Extract_Transform.get_weather,
-                                  params={'base':'Morse'},
+                                  python_callable=c.Extract_Transform.save_csv,
+                                  params={'keyword':'tobacco'},
                                   retries=3,
                                   dag=dag)
 
@@ -45,7 +45,7 @@ get_weather_task = PythonOperator(task_id='get_weather',
 load_to_s3_task = PythonOperator(task_id='load_to_s3',
                                  provide_context=True,
                                  python_callable=c.Load.upload_to_S3,
-                                 params={'base':'Morse'},
+                                 params={'keyword':'tobacco'},
                                  retries=3,
                                  dag=dag)
 

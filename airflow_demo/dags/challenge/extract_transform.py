@@ -1,68 +1,61 @@
-"""Extract Weather data through: https://openweathermap.org/current for W.C. Morse 
-   Transform json to .csv, and save on local filesystem 
+"""...
+
 """
 
 import logging
 import os
-import json
-from pandas.io.json import json_normalize
-import requests
-import datetime
+import research
 
 # enabloe logging messages to airflow
 log = logging.getLogger(__name__)
-api_key = '53e2067c8105f4cf7c07ccb68727965a'
 # store staging directory in current working directory
 local_dir = os.getcwd()
 
 class Extract_Transform:
+	"""...
+
+	"""
 	@classmethod
-	def get_weather(cls, **context):
-		""" ├── <Store Name>
-			│   ├── <pipeline_execution_date>_weather.csv
-			│   ├── <pipeline_execution_date>_weather.csv
-	
+	def save_csv(cls, **context):
+		""" ├── <keyword>
+			│   ├── <pipeline_execution_date>_research.csv
+				├── <pipeline_execution_date>_research.csv
 			.....
 
-			Save weather.csv according to degsined file structure
+			Save research.csv according to degsined file structurex
+
 			:type context: dict
 			:rtype: list
 		"""
-		log.info('Start getting weather data')
+		tobacco_research = research.Research(keyword)
+		articles = tobacco_research.PLOS_get_articles() # getting articles data
+
+		# process journal_list, article_list for DOAJ API
+		journal_list = set(articles['journal'])
+		article_list = set(articles['id'])
+		# drop nan
+		journal_list = set(filter(lambda x: x == x , journal_list))
+		article_list = set(filter(lambda x: x == x , article_list))
+
+		journals = research.join_df(journal_list, tobacco_research.DOAJ_journals) # journal data
+		article_text_link = research.join_df(article_list, tobacco_research.DOAJ_articles) # journal article link
+
+		# join article data with journal article link on doi_id
+		final_df = articles.merge(article_text_link, how='inner', left_on='id', right_on='id')
+		# join article data with journal data
+		final_df = final_df.merge(journals, how='inner', left_on='journal', right_on='title')
 
 		# getting execution date
 		execution_date = context['ds']
-		storage_name = context['params']['base']
-		base = os.path.join(local_dir, storage_name)
-
-		# base_url variable to store url 
-		base_url = "http://api.openweathermap.org/data/2.5/weather?"
-		coordinates = 'lat=37.831106&lon=-122.254110'
-		complete_url = base_url + "appid=" + api_key + "&" + coordinates
-		  
-		response = requests.get(complete_url) 
-		weather = response.json() 
-
-		# F = 1.8(K - 273) + 32, convert Kelvin To Fahrenheit
-		weather_df = json_normalize(weather['main'])
-		weather_df['temp'] = 1.8*(weather_df['temp']-273)+32
-		weather_df['temp_max'] = 1.8*(weather_df['temp_max']-273)+32
-		weather_df['temp_min'] = 1.8*(weather_df['temp_min']-273)+32
-		weather_df['date'] = execution_date
-		weather_df['store_name'] = storage_name
-
+		# getting base folder name: <keyword>
+		keyword = context['params']['keyword']
+		base = os.path.join(local_dir, keyword)
+		
+		# create file strcture
 		if not os.path.exists(base):
-				os.makedirs(base)
-		# save pandas dataframe as <Store Name>/<pipeline_execution_date>_weather.csv
-		file_name = str(execution_date)+'_weather.csv'
-		weather_df.to_csv(os.path.join(base,file_name))
+			os.makedirs(base)
 
-		log.info('Finish getting weather data')
-
-
+		file_name = str(execution_date)+'_research.csv'
+		final_df.to_csv(os.path.join(base,file_name)) # save final .csv
 
 	
-
-
-
-

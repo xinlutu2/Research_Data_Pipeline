@@ -14,9 +14,9 @@ class Load:
 	@classmethod
 	def upload_to_S3(cls, **context):
 		
-		storage_name = context['params']['base']
+		keyword = context['params']['keyword']
 		base = os.path.join(local_dir, storage_name)
-		bucket_name = 'storeweather'
+		bucket_name = 'storesearch'
 
 		session = boto3.Session(
 			aws_access_key_id='',
