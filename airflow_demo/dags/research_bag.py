@@ -32,7 +32,7 @@ start_tast = DummyOperator(
 )
 
 
-# Fetch ..., flatten into .csv files, save on local file system
+# Fetch research data flatten into .csv files, save on local file system
 get_research_task = PythonOperator(task_id='get_research',
                                   provide_context=True,
                                   python_callable=c.Extract_Transform.save_csv,

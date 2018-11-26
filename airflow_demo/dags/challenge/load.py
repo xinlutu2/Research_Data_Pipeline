@@ -19,8 +19,8 @@ class Load:
 		bucket_name = 'storeresearch'
 
 		session = boto3.Session(
-			aws_access_key_id='AKIAIJSTLZQYPLLCLK7Q',
-			aws_secret_access_key='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',
+			aws_access_key_id='',
+			aws_secret_access_key='',
 			region_name='us-east-1'
 		)
 		s3 = session.resource('s3')
