@@ -19,6 +19,6 @@
 		* Fetch research articles from [PLOS Search API](http://api.plos.org/solr/examples)
 		* Fetch according research journals information from [DOAJ API](https://doaj.org/api/v1/docs#!/Search/get_api_v1_search_articles_search_query) on journal level
 		* Fetch according articles online links from [DOAJ API](https://doaj.org/api/v1/docs#!/Search/get_api_v1_search_articles_search_query) on article level. This provides flexibility for researchers and analysts in case they want to see the full text article (This process might take severals minutes depends on the number of articles. In the example on tobacco research (around 300 articles), takes around 15 minutes)
-4. tobacco_research_full.csv for full dataset and tobacco_research_subset.csv for selected relevent fields for analysis will be saved on local file system in the same directory
+4. `tobacco_research_full.csv` for full dataset and `tobacco_research_subset.csv` for selected relevent fields for analysis will be saved on local file system in the same directory
 
 ## Improvements
