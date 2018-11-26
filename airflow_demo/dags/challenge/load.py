@@ -15,12 +15,12 @@ class Load:
 	def upload_to_S3(cls, **context):
 		
 		keyword = context['params']['keyword']
-		base = os.path.join(local_dir, storage_name)
-		bucket_name = 'storesearch'
+		base = os.path.join(local_dir, keyword)
+		bucket_name = 'storeresearch'
 
 		session = boto3.Session(
-			aws_access_key_id='',
-			aws_secret_access_key='',
+			aws_access_key_id='AKIAIJSTLZQYPLLCLK7Q',
+			aws_secret_access_key='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',
 			region_name='us-east-1'
 		)
 		s3 = session.resource('s3')

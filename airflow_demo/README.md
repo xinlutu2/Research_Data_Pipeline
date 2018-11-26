@@ -9,7 +9,7 @@ This Airflow is just for demo purpose to help demonstrate Producation ETL design
 3. A free [Weather API](https://openweathermap.org/api). The key is included in codes for demo purpose but recommended to register a new one to avoid reach usage limit. In production the key should be configured into environment variables.
 4. A free [AWS Account](https://aws.amazon.com/s3/). The S3 access key is removed in codes for demo purpose but in production the key should be configured into environment variables.
     * One bucket is created to store transformed csv. 
-    * **storeweather**: for data pipeline - weather_dag: Store daily weather data for Morse Store.
+    * create bucket named **storeresearchh**: for data pipeline - weather_dag: Store daily weather data for Morse Store.
 
 ## Quickstart
 1. Run `source env/bin/activate` to activate virtual environment

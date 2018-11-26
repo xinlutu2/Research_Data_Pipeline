@@ -52,4 +52,4 @@ load_to_s3_task = PythonOperator(task_id='load_to_s3',
 # end workflow
 end_task = DummyOperator(task_id='end', dag=dag)
 
-start_tast >> get_weather_task >> load_to_s3_task >> end_task
+start_tast >> get_research_task >> load_to_s3_task >> end_task
