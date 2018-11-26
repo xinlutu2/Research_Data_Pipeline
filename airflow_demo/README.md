@@ -3,6 +3,8 @@ This Airflow is just for demo purpose to help demonstrate Producation ETL design
 
 ## Prerequisites
 1. [Python 3.6](https://www.python.org/) and [Virtualenv](https://virtualenv.pypa.io/en/latest/)
+1.1 conda create -n test_env python=3.6.3 anaconda [apache-airflow is not supporting Python3.7 as of Nov 2018]
+1.2 Activation: conda activate test_env; Deactivation: conda deactivate test_env; Delete: conda remove -n test_env --all;
 2. [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/)
 3. A free [Weather API](https://openweathermap.org/api). The key is included in codes for demo purpose but recommended to register a new one to avoid reach usage limit. In production the key should be configured into environment variables.
 4. A free [AWS Account](https://aws.amazon.com/s3/). The S3 access key is removed in codes for demo purpose but in production the key should be configured into environment variables.
