@@ -2,7 +2,12 @@
 * ETL Python program to fetch research data based on keyword (tobacco in the example) (articles and journals) from [PLOS Search API](http://api.plos.org/solr/examples) and [DOAJ API](https://doaj.org/api/v1/docs#!/Search/get_api_v1_search_articles_search_query), transform the data into a tabular structure (.csv), analyze the data to determine important authors, journals/department for certain research topic
 * One sample Airflow pipeline to demonstrate how to convert ETL python program to production data pipeline: extact research data from API -> Flatten to .csv -> Load to S3 bucket 
 * The purpose of this python program is concentrated on data engineering practice to fetch data as complete as possible with less focus on analytics. Thus, important/influential authors, journals/department is simply defined as having most number of open access articles 
-* Results........
+* Results
+	* Analysis and data visualization are performed through Jupyter Notebook: `analysis_visualization.ipynb`
+	* The result report in .csv is saved as `tobacco_research_result.csv`
+	* ![alt text](https://github.com/xinlutu2/research_data_pipeline/blob/master/images/author.png 'author result')
+	* ![alt text](https://github.com/xinlutu2/research_data_pipeline/blob/master/images/journal.png 'journal result')
+	* ![alt text](https://github.com/xinlutu2/research_data_pipeline/blob/master/images/subject.png 'subject result')
 
 ## Prerequisites
 1. [Python 3.7](https://www.python.org/)
