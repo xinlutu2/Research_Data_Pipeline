@@ -1,7 +1,3 @@
-""" .....
-
-"""
-
 import urllib.request
 from urllib.error import URLError, HTTPError
 import json
@@ -33,8 +29,6 @@ def join_df(df_list, function):
 	return res_df
 
 class Research:
-	"""
-	"""
 	def __init__(self, keyword):
 		self.keyword = keyword # store keyword for research info: 'tobacco'
 		self.key = 't5XVxCxsjzVoZnUWMGgJ' # PLOS API key
