@@ -27,8 +27,8 @@
 4. `tobacco_research_full.csv` for full dataset and `tobacco_research_subset.csv` for selected relevent fields for analysis will be saved on local file system in the same directory
 
 ## Improvements
-	* Under tobacco_research_subset.csv and tobacco_research_full.csv, there is a field named: **article_statistics.statistics** is to indicate whether the article has [Article-Level Metrics] (http://alm.plos.org/) through [PLOS ALM API](http://alm.plos.org/api) which contains more information to determine the importance and performance of article, such as where users are directly viewing, sharing, discussing, citing, recommending the works (e.g., Twitter and Mendeley) ... 
-	* Additional research data can be fetched for further in-depth analysis
+* Under tobacco_research_subset.csv and tobacco_research_full.csv, there is a field named: **article_statistics.statistics** is to indicate whether the article has [Article-Level Metrics](http://alm.plos.org/) through [PLOS ALM API](http://alm.plos.org/api) which contains more information to determine the importance and performance of article, such as where users are directly viewing, sharing, discussing, citing, recommending the works (e.g., Twitter and Mendeley) ... 
+* Additional research data can be fetched for further in-depth analysis
 
 
 
